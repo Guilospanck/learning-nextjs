@@ -5,10 +5,8 @@ import GetAllUsersUsecase from "./useCases/getAllUsers"
 const User = () => {
   const getAllUsersUsecase = GetAllUsersUsecase()
   const viewModel = useUsersViewModel({ getAllUsersUsecase })
-   
-  return (
-    <UsersView viewModel={viewModel} />
-  )
+
+  return <UsersView viewModel={viewModel} />
 }
 
 export default User
