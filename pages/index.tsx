@@ -1,6 +1,5 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Image from 'next/image'
 import Link from 'next/link'
 
 const Home: NextPage = () => {
@@ -15,6 +14,9 @@ const Home: NextPage = () => {
       <main>
         <h1>
           <Link href={'/users'}>Users</Link>
+        </h1>
+        <h1>
+          <Link href={'/posts'}>Posts</Link>
         </h1>
       </main>
     </>
