@@ -6,6 +6,7 @@ interface Props {
   postData: PostsData
 }
 
+// React component to render the page
 export default function Post({ postData }: Props) {
   return (
     <>
@@ -16,6 +17,7 @@ export default function Post({ postData }: Props) {
   )
 }
 
+// Returns an array with possible values for [test]
 export const getStaticPaths = async () => {
   const paths = GetPostsData().getAllPostIds()
   return {
@@ -25,12 +27,13 @@ export const getStaticPaths = async () => {
 }
 
 interface IParams extends ParsedUrlQuery {
-  id: string
+  test: string
 }
 
+// Fetches necessary data for the [test]
 export const getStaticProps: GetStaticProps = ({ params }) => {
-  const { id } = params as IParams
-  const postData = GetPostsData().getBydId(id)
+  const { test } = params as IParams
+  const postData = GetPostsData().getBydId(test)
   return {
     props: {
       postData,

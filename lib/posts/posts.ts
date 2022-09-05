@@ -13,7 +13,7 @@ export interface IGetPostsData {
   sort: () => PostsData[],
   getAllPostIds: () => {
     params: {
-      id: string;
+      test: string;
     };
   }[],
   getBydId: (id: string) => {
@@ -22,7 +22,7 @@ export interface IGetPostsData {
 }
 
 const GetPostsData = (): IGetPostsData => {
-  const postsDirectory = path.join(process.cwd(), 'lib/posts')
+  const postsDirectory = path.join(process.cwd(), 'lib/posts/files')
   const fileNames = fs.readdirSync(postsDirectory)
 
   const getBydId = (id: string) => {
@@ -87,7 +87,7 @@ const GetPostsData = (): IGetPostsData => {
     return fileNames.map((fileName) => {
       return {
         params: {
-          id: fileName.replace(/\.md$/, ''),
+          test: fileName.replace(/\.md$/, ''),
         },
       }
     })
