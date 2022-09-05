@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import { PostsData } from "../../../lib/posts";
+import { PostsData } from "../../../lib/posts/posts";
 
 export interface Props {
   allPostsData: PostsData[]
@@ -8,6 +8,7 @@ export interface Props {
 const PostsView = ({ allPostsData }: Props) => {
   return (
     <>
+      <h1>All Posts sorted:</h1>
       {
         allPostsData?.map((post: PostsData) => (
           <Fragment key={post.id}>

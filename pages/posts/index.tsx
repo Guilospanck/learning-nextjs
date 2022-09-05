@@ -1,9 +1,10 @@
 import PostsView, { Props } from "./views"
 import { GetStaticProps, NextPage } from "next"
-import GetSortedPostsData from "../../lib/posts";
+import GetPostsData from "../../lib/posts/posts";
 
+/** Pre-rendering */
 export const getStaticProps: GetStaticProps = async () => {
-  const allPostsData = GetSortedPostsData().sort()
+  const allPostsData = GetPostsData().sort()
 
   return {
     props: {
