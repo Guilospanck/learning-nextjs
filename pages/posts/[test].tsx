@@ -13,6 +13,7 @@ export default function Post({ postData }: Props) {
       <h1>{postData.id}</h1>
       <h1>{postData.title}</h1>
       <h1>{postData.date}</h1>
+      <div dangerouslySetInnerHTML={{ __html: postData.contentHtml! }} />
     </>
   )
 }
@@ -31,9 +32,9 @@ interface IParams extends ParsedUrlQuery {
 }
 
 // Fetches necessary data for the [test]
-export const getStaticProps: GetStaticProps = ({ params }) => {
+export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { test } = params as IParams
-  const postData = GetPostsData().getBydId(test)
+  const postData = await GetPostsData().getBydId(test)
   return {
     props: {
       postData,
