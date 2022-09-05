@@ -1,23 +1,11 @@
 import { GetStaticProps } from "next"
-import Head from "next/head"
 import { ParsedUrlQuery } from "querystring"
-import Date from "../../components/date"
-import GetPostsData, { PostsData } from "../../lib/posts/posts"
-
-interface Props {
-  postData: PostsData
-}
+import GetPostsData from "../../lib/posts/posts"
+import TestPostView, { TestProps } from "./views/test_index"
 
 // React component to render the page
-export default function Post({ postData }: Props) {
-  return (
-    <>
-      <Head><title>{postData.title}</title></Head>
-      <h1>{postData.title}</h1>
-      <Date dateString={postData.date} />
-      <div dangerouslySetInnerHTML={{ __html: postData.contentHtml! }} />
-    </>
-  )
+export default function Post({ postData }: TestProps) {
+  return <TestPostView postData={postData} />
 }
 
 // Returns an array with possible values for [test]
