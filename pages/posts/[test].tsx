@@ -1,5 +1,7 @@
 import { GetStaticProps } from "next"
+import Head from "next/head"
 import { ParsedUrlQuery } from "querystring"
+import Date from "../../components/date"
 import GetPostsData, { PostsData } from "../../lib/posts/posts"
 
 interface Props {
@@ -10,9 +12,9 @@ interface Props {
 export default function Post({ postData }: Props) {
   return (
     <>
-      <h1>{postData.id}</h1>
+      <Head><title>{postData.title}</title></Head>
       <h1>{postData.title}</h1>
-      <h1>{postData.date}</h1>
+      <Date dateString={postData.date} />
       <div dangerouslySetInnerHTML={{ __html: postData.contentHtml! }} />
     </>
   )
