@@ -1,8 +1,36 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
+import { FormEvent } from 'react'
 
 const Home: NextPage = () => {
+
+  const onFormSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault() // important to show client console.logs
+
+    const id = (document.getElementById('id') as HTMLInputElement)?.value
+    const name = (document.getElementById('name') as HTMLInputElement)?.value
+
+    const body = { id, name }
+
+    try {
+      const res = await fetch('/api/displayFormData', {
+        method: 'POST', // or 'PUT'
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(body),
+      })
+      
+      const resJSON = await res.json()
+
+      console.log(`[client] Received: ${JSON.stringify(resJSON)}`)
+
+    } catch (err) {
+      console.error(`[client] Error: ${(err as Error).stack}`)
+    }
+  }
+
   return (
     <>
       <Head>
@@ -18,6 +46,13 @@ const Home: NextPage = () => {
         <h1>
           <Link href={'/posts'}>Posts</Link>
         </h1>
+        <form onSubmit={(e) => onFormSubmit(e)}>
+          <label>ID</label>
+          <input type={'text'} id={'id'} />
+          <label>Name</label>
+          <input type={'text'} id={'name'} />
+          <button type={'submit'}>Submit</button>
+        </form>
       </main>
     </>
   )
