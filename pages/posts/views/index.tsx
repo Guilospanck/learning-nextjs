@@ -3,6 +3,8 @@ import { PostsData } from "../../../lib/posts/posts";
 
 export interface Props {
   allPostsData: PostsData[]
+  errorCode?: number | false
+  stars?: number
 }
 
 const PostsView = ({ allPostsData }: Props) => {
