@@ -18,7 +18,7 @@ const useUsersViewModel = (props: UsersProps) => {
       setUsers(fetchedUsers)
     }
     getUsers()
-  }, [])
+  }, [props.getAllUsersUsecase])
 
   return {
     users
