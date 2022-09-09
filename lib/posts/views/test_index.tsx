@@ -1,6 +1,6 @@
 import Head from "next/head"
 import Date from "../../../components/date"
-import { PostsData } from "../../../lib/posts/posts"
+import { PostsData } from "../useCases/getPostsUsecase"
 import test_styles from './test_index.module.css'
 
 export interface TestProps {
@@ -11,11 +11,11 @@ export interface TestProps {
 export default function TestPostView({ postData }: TestProps) {
   return (
     <>
-      <Head><title>{postData.title}</title></Head>
+      <Head><title>{postData?.title}</title></Head>
       <article className={test_styles.article}>
-        <h1>{postData.title}</h1>
-        <Date dateString={postData.date} />
-        <div dangerouslySetInnerHTML={{ __html: postData.contentHtml! }} />
+        <h1>{postData?.title}</h1>
+        {postData?.date && <Date dateString={postData.date} />}
+        <div dangerouslySetInnerHTML={{ __html: postData?.contentHtml! }} />
       </article>
     </>
   )

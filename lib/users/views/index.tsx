@@ -19,7 +19,7 @@ const UsersView: NextPage<ViewProps> = ({ viewModel }) => {
       </Head>
       <h1>Users</h1>
       {
-        viewModel.users.map((user: User) => {
+        viewModel?.users?.map((user: User) => {
           return (
             <Fragment key={user.id}>
               <h3>{user.id}</h3>

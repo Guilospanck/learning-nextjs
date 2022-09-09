@@ -1,7 +1,7 @@
-import PostsView, { Props } from "./views"
-import { GetStaticProps, NextPage } from "next"
-import GetPostsData from "../../lib/posts/posts";
-import Error from "next/error";
+import PostsView from "../../lib/posts/views"
+import { NextPage } from "next"
+import GetPostsData, { PostsData } from "../../lib/posts/useCases/getPostsUsecase"
+import usePostsViewModel from "../../lib/posts/viewModels/usePostsViewModel"
 
 /** Pre-rendering */
 // export const getStaticProps: GetStaticProps = async () => {
@@ -26,14 +26,16 @@ export const getServerSideProps = async () => {
   }
 }
 
+type Props = {
+  allPostsData: PostsData[]
+  errorCode?: number | false
+  stars?: number
+}
+
 const Posts: NextPage<Props> = ({ allPostsData, errorCode, stars }) => {
-  if (errorCode) {
-    return <Error statusCode={errorCode} />
-  }
+  const viewModel = usePostsViewModel({ allPostsData, errorCode, stars })
 
-  console.log(`Stars count: ${stars}`)
-
-  return <PostsView allPostsData={allPostsData} />
+  return <PostsView viewModel={viewModel} />
 }
 
 export default Posts

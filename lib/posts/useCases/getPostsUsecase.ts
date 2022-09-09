@@ -12,7 +12,7 @@ type Post = {
 
 export type PostsData = Post & { id: string }
 
-export interface IGetPostsData {
+export interface IGetPostsDataUsecase {
   sort: () => PostsData[],
   getAllPostIds: () => {
     params: {
@@ -25,7 +25,7 @@ export interface IGetPostsData {
   }>
 }
 
-const GetPostsData = (): IGetPostsData => {
+const GetPostsDataUsecase = (): IGetPostsDataUsecase => {
   const postsDirectory = path.join(process.cwd(), 'lib/posts/files')
   const fileNames = fs.readdirSync(postsDirectory)
 
@@ -111,4 +111,4 @@ const GetPostsData = (): IGetPostsData => {
   }
 }
 
-export default GetPostsData
+export default GetPostsDataUsecase

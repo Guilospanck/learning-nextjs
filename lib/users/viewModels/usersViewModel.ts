@@ -9,7 +9,7 @@ type UsersProps = {
   getAllUsersUsecase: IGetAllUsersUsecase
 }
 
-const useUsersViewModel = (props: UsersProps) => {
+const useUsersViewModel = (props: UsersProps): IUserViewModel => {
   const [users, setUsers] = useState<User[]>([])
 
   useEffect(() => {

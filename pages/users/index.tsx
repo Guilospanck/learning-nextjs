@@ -1,6 +1,6 @@
-import UsersView from "./views"
-import useUsersViewModel from "./viewModels/usersViewModel"
-import GetAllUsersUsecase from "./useCases/getAllUsers"
+import UsersView from "../../lib/users/views"
+import useUsersViewModel from "../../lib/users/viewModels/usersViewModel"
+import GetAllUsersUsecase from "../../lib/users/useCases/getAllUsers"
 
 const User = () => {
   const getAllUsersUsecase = GetAllUsersUsecase()

@@ -5,11 +5,11 @@ export type User = {
 }
 
 export interface IGetAllUsersUsecase {
-  getAll: () => Promise<User[]>
+  getAll: () => User[]
 }
 
-const GetAllUsersUsecase = () => {
-  const getAll = async (): Promise<User[]> => {
+const GetAllUsersUsecase = (): IGetAllUsersUsecase => {
+  const getAll = (): User[] => {
     const test: User[] = [{
       id: 'Hi',
       name: 'Guilherme',

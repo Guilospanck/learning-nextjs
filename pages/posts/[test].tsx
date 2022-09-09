@@ -1,7 +1,7 @@
 import { GetStaticProps } from "next"
 import { ParsedUrlQuery } from "querystring"
-import GetPostsData from "../../lib/posts/posts"
-import TestPostView, { TestProps } from "./views/test_index"
+import GetPostsData from "../../lib/posts/useCases/getPostsUsecase"
+import TestPostView, { TestProps } from "../../lib/posts/views/test_index"
 
 // React component to render the page
 export default function Post({ postData }: TestProps) {
